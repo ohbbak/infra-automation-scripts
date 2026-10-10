@@ -1,1 +1,13 @@
-# infra-automation-scripts
+# EC2 Server Resource Auto-Monitor (서버 자원 자동 모니터링 봇)
+
+## 📌 프로젝트 목적
+제한된 클라우드(EC2) 자원 환경에서 애플리케이션을 구동할 때, 트래픽 증가에 따른 리소스(CPU/Memory) 병목 현상을 선제적으로 파악하기 위해 제작한 파이썬 기반 모니터링 자동화 스크립트입니다. 
+단순한 서버 구동을 넘어, '무중단 운영을 위한 가시성(Observability) 확보'라는 인프라 엔지니어의 기본기를 다지기 위해 구현했습니다.
+
+## ⚙️ 주요 기능 및 특징
+- **Python `psutil` 라이브러리 활용:** 서버의 CPU, 가상 메모리, Root 디스크 사용량을 1초 단위로 추출.
+- **상태 판별 및 로깅 자동화:** CPU 80%, 디스크 90% 초과 시 `WARNING` 상태로 분류하여 `server_health_log.csv` 파일에 누적 기록.
+- **Linux Crontab 연동:** 리눅스 스케줄러(Cron)를 이용해 관리자의 개입 없이 매시간 정각에 스크립트가 자동 실행되도록 구성.
+
+## 🚀 향후 발전 계획 (What's Next)
+- 단순 CSV 파일 저장을 넘어, 경고(WARNING) 발생 시 Slack Webhook API를 연동하여 관리자에게 실시간 알람 전송 기능 추가.
